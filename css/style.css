@@ -1,0 +1,294 @@
+body,
+p,
+ul,
+li,
+div,
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+
+a {
+  text-decoration: none;
+
+}
+
+main {
+  background-color: black;
+  width: 100%;
+  height: 1000px;
+}
+
+footer {
+  width: 100%;
+  height: 100px;
+  background-color: rgb(249, 205, 121);
+}
+
+/* パターン3 */
+.l-header {
+  display: block;
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  background: #2C2C2C;
+}
+
+
+.c-hamburger {
+  position: relative;
+  width: inherit;
+  height: inherit;
+  margin: 0;
+  border: transparent;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+
+.c-hamburger span {
+  display: block;
+  position: relative;
+  left: 50%;
+  width: 24px;
+  height: 2px;
+  transform: translateX(-50%);
+  background: black;
+  transition: all 0.4s;
+}
+
+.c-hamburger span:nth-of-type(1) {
+  top: -4px;
+}
+
+.c-hamburger span:nth-of-type(2) {
+  top: 1px;
+
+  transform: translateX(-0.45deg);
+}
+
+.c-hamburger span:nth-of-type(3) {
+  top: 6px;
+  transform: translateX(-0.45deg);
+}
+
+
+
+.c-hamburger.is-active span:nth-of-type(1) {
+  top: 0;
+  transform: translateX(-50%) rotate(225deg);
+}
+
+.c-hamburger.is-active span:nth-of-type(2) {
+  opacity: 0;
+}
+
+.c-hamburger.is-active span:nth-of-type(3) {
+  top: -4px;
+  transform: translateX(-50%) rotate(-225deg);
+}
+
+
+
+
+.p-header__nav {
+  display: flex;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  right: -100%;
+
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background: transparent;
+  opacity: 0;
+  transition: top 0.6s, right 0.6s, opacity 0.6s;
+}
+
+.p-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: inherit;
+  padding: 0 30px;
+
+}
+
+
+
+
+.p-header__hamburger {
+  z-index: 100;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 95px;
+  height: 100%;
+}
+
+.p-header__nav.is-active {
+  position: fixed;
+  top: 0;
+  right: 0;
+  opacity: 1;
+  background-color: #2C2C2C;
+}
+
+
+
+.p-nav__list {
+  display: block;
+  padding-right: 20px;
+  padding-left: 20px;
+
+
+}
+
+.p-nav__item {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+
+}
+
+
+.p-nav__link {
+  color: white;
+  display: block;
+  padding: 20px;
+  cursor: pointer;
+
+}
+
+.p-nav__item.p-nav__item--acMenu>.p-nav__link {
+  position: relative;
+}
+
+.p-nav__item.p-nav__item--acMenu>.p-nav__link::after {
+  position: absolute;
+  content: "▼";
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
+}
+
+
+.p-nav__middle {
+  display: none;
+}
+
+.p-nav__middleItem a::before {
+  margin-right: 8px;
+  margin-left: 8px;
+  content: "-";
+}
+
+
+.p-nav__item.is-open .p-nav__middle {
+  display: block;
+}
+
+@media screen and (min-width: 768px) {
+
+  .p-header__hamburger {
+    display: none;
+  }
+
+  .p-nav__inner {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: initial;
+    width: 100%;
+
+  }
+
+  .p-header__nav {
+    position: static;
+    opacity: 1;
+    height: inherit;
+    width: initial;
+    width: 100%;
+    max-width: fit-content;
+  }
+
+  .p-nav__list {
+    padding-right: 0;
+    padding-left: 0;
+    display: flex;
+    flex-direction: row;
+
+  }
+
+  .p-nav__item ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 130px;
+    margin: 0;
+    padding: 0;
+  }
+
+
+
+  .p-nav__item ul li {
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    transition: all 0.1s;
+  }
+
+  .p-nav__item ul li a {
+
+    display: flex;
+    align-items: center;
+    padding: 13px 20px 13px 10px;
+    color: #fff;
+  }
+
+  .p-nav__item:hover>ul>li {
+    height: 48px;
+    overflow: visible;
+    background-color: rgb(242, 195, 107);
+  }
+
+  .p-nav__item:hover>ul>li:not(:first-child) {
+    border-top: 1px solid #fff;
+  }
+
+  .p-nav__item:hover>ul>li.p-nav__middleItem:hover {
+    background-color: #fff;
+  }
+
+  .p-nav__item:hover>ul>li.p-nav__middleItem:hover a {
+    color: #2C2C2C;
+  }
+
+  .p-nav__middle {
+    display: block;
+    text-align: left;
+  }
+
+  .p-nav__middleItem {
+    position: relative;
+  }
+
+  .p-nav__middleItem a {
+    position: relative;
+    white-space: nowrap;
+  }
+
+
+
+}
